@@ -5,7 +5,7 @@ source ./common.sh
 check_root
 
 echo "Please enter DB password:"
-read -s mysql_root_password
+read  mysql_root_password
 
 dnf module disable nodejs -y &>>$LOGFILE
 dnf module enable nodejs:20 -y &>>$LOGFILE
@@ -30,7 +30,7 @@ unzip /tmp/backend.zip &>>$LOGFILE
 npm install &>>$LOGFILE
 
 #check your repo and path
-cp /home/ec2-user/expense-shell-1/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+cp /home/ec2-user/expenseshell-1/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 
 systemctl daemon-reload &>>$LOGFILE
 
@@ -40,6 +40,6 @@ systemctl enable backend &>>$LOGFILE
 
 dnf install mysql -y &>>$LOGFILE
 
-mysql -h db.daws78s.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+mysql -h db.daws78s.fun -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 
 systemctl restart backend &>>$LOGFILE
