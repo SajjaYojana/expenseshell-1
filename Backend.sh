@@ -3,9 +3,6 @@
 source ./common.sh
 check_root
 
-dnf module disable nodejs -y &>>$LOGFILE
-VALIDATE $? "Disabling default nodejs"
-
 dnf module enable nodejs:20 -y &>>$LOGFILE
 VALIDATE $? "Enabling nodejs:20 version"
 
